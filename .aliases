@@ -1,0 +1,2 @@
+alias dots='/usr/bin/git --git-dir=/Users/kyle/.dots/ --work-tree=/Users/kyle' 
+alias vi=/usr/bin/vi

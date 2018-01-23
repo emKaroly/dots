@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Make vim the default editor.
+export EDITOR=vim
+
+# Prefer US English and use UTF-8.
+export LANG='en_US.UTF-8';
+export LC_ALL='en_US.UTF-8';
+
+export PATH=$PATH:$HOME/Dropbox/src
+export TIMELOG=$HOME/Dropbox/text/ledger/timelog2018.lgd
+export LEDGER_FILE=$HOME/Dropbox/text/ledger/main.ledger
+export WIKI_DIR=$HOME/Dropbox/text/wiki
+
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
