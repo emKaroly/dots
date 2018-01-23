@@ -10,10 +10,11 @@ brew update
 brew upgrade
 
 brew install coreutils
-brew install vim --with-python3
+brew install vim --with-python3 --with-override-system-vi
 brew install macvim --with-python3
 brew install mc
 brew install git
+brew install ledger
 
 brew install grep
 brew install openssh
@@ -25,10 +26,15 @@ brew install rclone
 brew install pandoc
 brew install tree
 brew install fzf
+brew install rg
 brew install gibo
 brew install cheat
 brew install cmus
 brew install aria2
+
+# Install zsh and make it default
+brew install zsh
+sudo -s 'echo /usr/local/bin/zsh >> /etc/shells' && chsh -s /usr/local/bin/zsh
 
 echo "Installing apps..."
 brew tap caskroom/cask

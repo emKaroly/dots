@@ -38,6 +38,8 @@ defaults write com.apple.universalaccess reduceTransparency -int 1
 #System Preferences>Accessibility>Reduce motion
 defaults write com.apple.universalaccess reduceMotion -int 1
 
+defaults write -g CGDisableCursorLocationMagnification -bool YES
+
 #System Preferences>Keyboard>Use F1, F2, etc. keys as standard function keys
 #defaults write -g com.apple.keyboard.fnState -int 1
 
