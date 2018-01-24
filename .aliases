@@ -1,2 +1,3 @@
 alias dots='/usr/bin/git --git-dir=/Users/kyle/.dots/ --work-tree=/Users/kyle' 
+alias dotsedit='GIT_DIR=/Users/kyle/.dots/ GIT_WORK_TREE=/Users/kyle vim' 
 alias vi=/usr/bin/vi

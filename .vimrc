@@ -18,7 +18,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vimwiki/vimwiki'
 "Plugin 'bling/vim-airline'
 Plugin 'itchyny/lightline.vim'
+" Git Plugins
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'junegunn/seoul256.vim'
 Plugin 'plasticboy/vim-markdown'
@@ -188,9 +190,10 @@ nnoremap <leader>j :tabprevious<CR>
 nmap <silent> <C-CR> t :rightbelow 20vs<CR>:e .<CR>:wincmd h<CR>
 " F3 insert timestamp
 nmap <F3> i<C-R>=strftime("%Y%m%d%H%M%S%Z")<CR><Esc>
+" F4 insert timestamp
+nmap <F4> <Esc><C-o>O<Esc>i<C-R>="[](" . strftime("%Y%m%d%H%M%S%Z") .".md)"<CR><Esc><S-i><Right>
 " leader + f: FZF Search
 nnoremap <silent><leader>f :NV<CR>
-
 "Remap autocompletion from Ctrl+Space to Enter when autocomplete menu is visible
 ":inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
@@ -277,10 +280,13 @@ endfunction
 
 " Autocommands
 " When new .md file is created load the template file.
-autocmd bufnewfile *.md source $HOME/Dropbox/text/notes_header.txt
+"autocmd bufnewfile *.md execute ":put %"
+"autocmd bufnewfile *.md execute ":put expand('%:t:r')"
+"autocmd bufnewfile *.md source $HOME/Dropbox/text/notes_header.txt
+autocmd bufnewfile *.md source $HOME/Dropbox/text/notes_test.txt
 "autocmd bufnewfile *.md execute "1," . 5 . "g/Created:/s//Created:" . expand('<afile>')
 "autocmd bufnewfile *.md execute "1," . 5 . "g/Created:/s//Created:" . expand('<afile>')
-autocmd bufnewfile *.md execute "1," . 2 . "g/#.*/s//#" .strftime("%Y%m%d%H%M%S%Z")
+"autocmd bufnewfile *.md execute "1," . 2 . "g/#.*/s//#" .strftime("%Y%m%d%H%M%S%Z")
 
 " fzf.vim
 " Mapping selecting mappings
