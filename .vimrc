@@ -280,6 +280,13 @@ function! VimwikiLinkHandler(link)
     if link =~# '.*pdf$'
         exe "!" . "open " . $HOME . link
         return 1
+    elseif link =~# '.*lgd$'
+        exe ":e!" . $HOME . link
+        return 1
+    elseif a:link =~ "command:"
+        let command = a:link[8:]
+        exe ":r!".command
+        return 1
     else
        return 0
     endif
