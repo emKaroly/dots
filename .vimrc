@@ -194,7 +194,7 @@ nmap <silent> <C-CR> t :rightbelow 20vs<CR>:e .<CR>:wincmd h<CR>
 " F3 insert timestamp
 nmap <F3> i<C-R>=strftime("%Y%m%d%H%M%S%Z")<CR><Esc>
 " F4 insert timestamp
-nmap <F4> <Esc><C-o>O<Esc>i<C-R>="[](" . strftime("%Y%m%d%H%M%S%Z") .".md)"<CR><Esc><S-i><Right>
+nmap <F4> i<C-R>="[](" . strftime("%Y%m%d%H%M%S%Z") .".md)"<CR><Esc><S-i><Right>
 " leader + f: FZF Search
 nnoremap <silent><leader>f :NV<CR>
 "Remap autocompletion from Ctrl+Space to Enter when autocomplete menu is visible
