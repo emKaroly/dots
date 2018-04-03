@@ -303,7 +303,22 @@ autocmd BufNewFile,BufRead *.qbs   set filetype=javascript
 "autocmd bufnewfile *.md execute "1," . 5 . "g/Created:/s//Created:" . expand('<afile>')
 "autocmd bufnewfile *.md execute "1," . 5 . "g/Created:/s//Created:" . expand('<afile>')
 "autocmd bufnewfile *.md execute "1," . 2 . "g/#.*/s//#" .strftime("%Y%m%d%H%M%S%Z")
+"
 
+function! ToggleCalendar()
+  execute ":Calendar -view=year -split=vertical -width=27"
+  if exists("g:calendar_open")
+    if g:calendar_open == 1
+      execute "q"
+      unlet g:calendar_open
+    else
+      g:calendar_open = 1
+    end
+  else
+    let g:calendar_open = 1
+  end
+endfunction
+:autocmd FileType vimwiki map <leader>cd :call ToggleCalendar()<CR>
 " fzf.vim
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
