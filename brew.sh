@@ -42,6 +42,7 @@ brew tap caskroom/cask
 APPS=(
     alfred
     android-studio
+    appcleaner
     contexts
     dropbox
     flux
