@@ -298,6 +298,8 @@ endfunction
 "autocmd bufnewfile *.md execute ":put expand('%:t:r')"
 "autocmd bufnewfile *.md source $HOME/Dropbox/text/notes_header.txt
 autocmd bufnewfile *.md source $HOME/Dropbox/text/notes_test.txt
+autocmd BufNewFile,BufRead *.qs   set filetype=javascript
+autocmd BufNewFile,BufRead *.qbs   set filetype=javascript
 "autocmd bufnewfile *.md execute "1," . 5 . "g/Created:/s//Created:" . expand('<afile>')
 "autocmd bufnewfile *.md execute "1," . 5 . "g/Created:/s//Created:" . expand('<afile>')
 "autocmd bufnewfile *.md execute "1," . 2 . "g/#.*/s//#" .strftime("%Y%m%d%H%M%S%Z")
