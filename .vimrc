@@ -149,7 +149,8 @@ set concealcursor=
 " If spellfile is missing change SK to sk_SK and let spellfile.vim download
 " the files and than change sk_SK back so you dont get Warnning
 set spell spelllang=en_us,SK
-set nospell
+"set nospell
+set belloff=all
 set path+=$HOME/Dropbox/**,$HOME/Projects/**
 
 "========COMMANDS==============================================================
