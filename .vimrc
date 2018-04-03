@@ -120,6 +120,8 @@ set nosmartindent
 set tabstop=4
 "when indenting with '>', use 4 spaces width
 set shiftwidth=4
+set nofoldenable
+set foldmethod=indent
 "On pressing tab, insert 4 spaces
 set expandtab
 
@@ -267,6 +269,10 @@ let g:vimwiki_listsyms = ' ¼½¾x'
 "let g:vimwiki_listsyms = '✗○◐●✓'
 " Autosave for vimwiki files(.md also)
 let g:vimwiki_autowriteall = 0
+let g:vimwiki_folding = 'custom'
+
+" Default to Vimwiki's section folding options
+autocmd FileType vimwiki setlocal fdm=indent
 
 function! VimwikiLinkHandler(link)
     let link = a:link
