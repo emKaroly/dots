@@ -56,6 +56,7 @@ APPS=(
     scroll-reverser
     skype
     teamviewer
+    basictex
     the-unarchiver
     vlc
     xnviewmp

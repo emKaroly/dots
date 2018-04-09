@@ -14,3 +14,5 @@ export WIKI_DIR=$HOME/Dropbox/text/wiki
 
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+
+export PATH="/Library/TeX/texbin/:$PATH"
