@@ -11,8 +11,12 @@ export PATH=$PATH:$HOME/Dropbox/src
 export TIMELOG=$HOME/Dropbox/text/ledger/timelog2018.lgd
 export LEDGER_FILE=$HOME/Dropbox/text/ledger/main.ledger
 export WIKI_DIR=$HOME/Dropbox/text/wiki
+export WIKI_DIR_PROJECTS=$HOME/Dropbox/Projects
 
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 export PATH="/Library/TeX/texbin/:$PATH"
+export PYTHONHOME=/usr/local/Cellar/python/3.6.5/Frameworks/Python.framework/Versions/3.6/
+export PYTHONPATH=$PYTHONHOME/bin
+export JAVA_HOME=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home/
