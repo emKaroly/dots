@@ -323,7 +323,17 @@ function! ToggleCalendar()
     let g:calendar_open = 1
   end
 endfunction
-:autocmd FileType vimwiki map <leader>cd :call ToggleCalendar()<CR>
+":autocmd FileType vimwiki map <leader>cd :call ToggleCalendar()<CR>
+nnoremap <silent> <leader>cd :Calendar -position=here<CR>
+" Connect to diary
+augroup vimrc_calendar
+  autocmd!
+  autocmd FileType calendar
+        \ nnoremap <silent><buffer> <cr>
+        \ :<c-u>call personal#wiki#open_diary()<cr>
+augroup END
+let g:wiki_root = '~/Dropbox/text/wiki'
+
 " fzf.vim
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
