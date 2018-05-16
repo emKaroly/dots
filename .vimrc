@@ -15,31 +15,25 @@ call vundle#begin()
 
 "========PLUGINS==============================================================
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vimwiki/vimwiki'
-"Plugin 'bling/vim-airline'
+"Plugin 'vimwiki/vimwiki'
+Plugin 'lervag/wiki'
 Plugin 'itchyny/lightline.vim'
 " Git Plugins
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'junegunn/seoul256.vim'
-Plugin 'plasticboy/vim-markdown'
+"Plugin 'plasticboy/vim-markdown'
 Plugin 'godlygeek/tabular'
-Plugin 'vim-scripts/vim-gradle'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
-"Plugin 'custom-colors'
 "A Plugin to show a diff, whenever recovering a buffer
 Plugin 'chrisbra/Recover.vim'
-" Renamed 'vim-scripts/groovyindent-unix' for gradle indenting
-"Plugin 'gradleindent-unix'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'Alok/notational-fzf-vim'
 "Plugin 'mattn/calendar-vim'
 Plugin 'itchyny/calendar.vim'
 Plugin 'ledger/vim-ledger'
-Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'sk1418/HowMuch'
 Plugin 'CoatiSoftware/vim-sourcetrail'
 
@@ -61,12 +55,6 @@ filetype plugin indent on    " required
 set shell=/bin/bash
 
 "========COLORSCHEME===========================================================
-"Colorscheme - Solarized Light
-"set background=light
-"let g:solarized_termcolors=256
-"colorscheme solarizedset 
-
-"Colorscheme - Gruvbox
 colorscheme gruvbox
 set background=dark
 
@@ -78,10 +66,6 @@ set background=dark
 "else
 "    set background=dark
 "endif
-
-"colorscheme monokai
-"colorscheme stonewashed-256
-"colorscheme smpl
 
 if exists('+colorcolumn')
     set colorcolumn=80
@@ -155,13 +139,14 @@ set path+=$HOME/Dropbox/**,$HOME/Projects/**
 
 "========COMMANDS==============================================================
 command Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
-"command R !./%
+
 command R !python3 %
 command S !screen -S logWindow -X exec python3 %:p
 
 "Markdown Preview
+command MKD :silent !open -a "Marked 2.app" %:p
 command MDP !python -m markdown2 %:p > tempMarkdownPreview.html && open tempMarkdownPreview.html
-command MD    !pandoc %:p -f markdown -t html -s -o /tmp/tmp.html && open /tmp/tmp.html
+command MD :silent !pandoc %:p -f markdown -t html -s -o /tmp/tmp.html && open /tmp/tmp.html
 command MDnum !pandoc %:p -f markdown --number-sections -t html -s -o /tmp/tmp.html && open /tmp/tmp.html
 command MDrtf !pandoc %:p -f markdown --number-sections -t rtf -s -o /tmp/tmp.rtf && open /tmp/tmp.rtf
 
@@ -175,7 +160,6 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 "MacVim Settings
-":set guifont=Meslo_LG_M_DZ_for_Powerline:h15
 :set guifont=DejaVu_Sans_Mono_for_Powerline:h16
 set guioptions=
 
@@ -197,7 +181,22 @@ nmap <F3> i<C-R>=strftime("%Y%m%d%H%M%S%Z")<CR><Esc>
 nmap <F4> i<C-R>="[](" . strftime("%Y%m%d%H%M%S%Z") .".md)"<CR><Esc><S-i><Right>
 " leader + f: FZF Search
 nnoremap <silent><leader>f :NV<CR>
-"Remap autocompletion from Ctrl+Space to Enter when autocomplete menu is visible
+nmap <F2> :w >> kkt.md<CR>
+"cmap <F5> :'<,'>w >> =strftime("%Y-%m-%d.md")<CR>
+"cmap <F6> w >> =strftime("%Y-%m-%d.md")<CR>
+"nnoremap <F6> DD :exe ":w! >>".'$WIKI_DIR/diary/'.strftime("%Y-%m-%d.md")<CR>
+":vnoremap <F6> V :exe ":w! >>" . '$WIKI_DIR/diary/' . strftime("%Y-%m-%d.md")<CR>
+
+"map <F5> V :'<,'> w! >> /YOUR/SELECTIONFILE<cr>:'<,'>d<cr>
+"map <F5> V :'<,'> w! >> /YOUR/SELECTIONFILE<cr>:'<,'>d<cr>
+command! -range DONE execute "'<,'>:w! >> ".strftime("%Y-%m-%d.md")
+nnoremap <leader>dd  V :DONE<CR> dd
+
+nnoremap <leader>ev :tabe $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
+"Remap autocompletion from Ctrl+Space to Enter when autocomplete menu i
+"Remap autocompletion from Ctrl+Space to Enter when autocomplete menu i
 ":inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 "========PLUGINS SETTINGS======================================================
@@ -245,7 +244,6 @@ set showtabline=2  " Show tabline
 set guioptions-=e  " Don't use GUI tabline
 set noshowmode      " Remove "INSERT, NORMAL, etc from status
 
-
 "notational-fzf-vim
 let g:nv_search_paths = ['$HOME/Dropbox/text']
 "let g:nv_main_directory = ['~/Dropbox']
@@ -256,13 +254,20 @@ let g:calendar_first_day = 'monday'
 
 " Vimwiki
 let g:vimwiki_use_calendar=1
-:map <leader>cc <plug>VimwikiToggleListItem
+:map    <leader>cc  <Plug>VimwikiToggleListItem
+:nmap   <Leader>u   <Plug>VimwikiDiaryPrevDay
+:nmap   <Leader>d   <Plug>VimwikiDiaryNextDay
 let g:vimwiki_list = [{'path': '$WIKI_DIR',
             \'index': 'main',
             \'syntax': 'markdown', 
             \'ext': '.md',
+            \'auto_toc': 1},
+            \{'path': '$WIKI_DIR_PROJECTS',
+            \'index': 'main',
+            \'syntax': 'markdown', 
+            \'ext': '.md',
             \'auto_toc': 1}]
-let g:vimwiki_ext2syntax = {}
+let g:vimwiki_ext2syntax = {'.md': 'markdown'}
 let g:vimwiki_global_ext = 0
 let g:vimwiki_ext = ".md"
 let g:vimwiki_listsyms = ' ¼½¾x'
@@ -278,14 +283,14 @@ autocmd FileType vimwiki setlocal fdm=indent
 function! VimwikiLinkHandler(link)
     let link = a:link
     if link =~# '.*pdf$'
-        exe "!" . "open " . $HOME . link
+        silent exe "!" . "open " . $HOME . link
         return 1
-    elseif link =~# '.*lgd$'
-        exe ":e!" . $HOME . link
+    elseif link =~# '.*lgd$' || link =~# '.*ledger$'
+        silent exe ":e!" . $HOME . link
         return 1
     elseif a:link =~ "command:"
         let command = a:link[8:]
-        exe ":r!".command
+        silent exe ":r!".command
         return 1
     else
        return 0
@@ -332,11 +337,13 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Vim-Ledger
+let g:ledger_maxwidth = 80
+let g:ledger_align_at = 50
 let g:ledger_date_format = '%Y-%m-%d'
-let g:ledger_default_commodity = '€'
+let g:ledger_default_commodity = 'EUR'
 let g:ledger_commodity_before = 1
-let g:ledger_commodity_sep = ''
-let g:ledger_extra_options = '-f ~/Dropbox/Plaintext/Ledger/main.ledger'
+let g:ledger_commodity_sep = ' '
+let g:ledger_extra_options = '-f ~/Dropbox/text/Ledger/main.ledger'
 if exists('g:ycm_filetype_blacklist')
     call extend(g:ycm_filetype_blacklist, { 'ledger': 1 })
 endif
