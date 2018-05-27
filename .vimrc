@@ -15,27 +15,34 @@ call vundle#begin()
 
 "========PLUGINS==============================================================
 Plugin 'VundleVim/Vundle.vim'
-"Plugin 'vimwiki/vimwiki'
-Plugin 'lervag/wiki'
-Plugin 'itchyny/lightline.vim'
-" Git Plugins
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+" Appearance 
 Plugin 'flazz/vim-colorschemes'
-"Plugin 'plasticboy/vim-markdown'
+Plugin 'itchyny/lightline.vim'
+Plugin 'Yggdroot/indentLine'
+" Wiki
+Plugin 'vimwiki/vimwiki'
+"Plugin 'lervag/wiki'
 Plugin 'godlygeek/tabular'
-Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
-"A Plugin to show a diff, whenever recovering a buffer
-Plugin 'chrisbra/Recover.vim'
+Plugin 'itchyny/calendar.vim'
+" Search
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'Alok/notational-fzf-vim'
-"Plugin 'mattn/calendar-vim'
-Plugin 'itchyny/calendar.vim'
+Plugin 'CoatiSoftware/vim-sourcetrail'
+" Git
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+" cTags
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'majutsushi/tagbar'
+" Code completion
+Plugin 'scrooloose/syntastic'
+Plugin 'Valloric/YouCompleteMe'
+" Misc
 Plugin 'ledger/vim-ledger'
 Plugin 'sk1418/HowMuch'
-Plugin 'CoatiSoftware/vim-sourcetrail'
+"A Plugin to show a diff, whenever recovering a buffer
+Plugin 'chrisbra/Recover.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -98,6 +105,7 @@ set clipboard=unnamed
 set scrolloff=3
 set sidescroll=5
 set nowrap
+set shell=/bin/zsh
 
 set nosmartindent
 "show existing tab with 4 spaces width
@@ -114,19 +122,14 @@ set expandtab
 "forced to write or undo your changes first. Also, undo buffers and marks are
 "preserved while the buffer is open.
 set hidden
-
 " Preserve creation date of files: :help 'backupcopy'
 set backupcopy=yes
-
 " tell vim to keep a backup file
 set backup
-
 " tell vim where to put its backup files
 set backupdir=/private/tmp
-
 " tell vim where to put swap files
 set dir=/private/tmp
-
 " Set when text can be concealed
 set conceallevel=2
 set concealcursor=
@@ -138,8 +141,10 @@ set belloff=all
 set path+=$HOME/Dropbox/**,$HOME/Projects/**
 
 "========COMMANDS==============================================================
+" Find TODO in current folder recursive
 command Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
-
+" Find TODO in current File
+command Td noautocmd vimgrep /TODO\|FIXME/j % | cw
 command R !python3 %
 command S !screen -S logWindow -X exec python3 %:p
 
@@ -181,6 +186,7 @@ nmap <F3> i<C-R>=strftime("%Y%m%d%H%M%S%Z")<CR><Esc>
 nmap <F4> i<C-R>="[](" . strftime("%Y%m%d%H%M%S%Z") .".md)"<CR><Esc><S-i><Right>
 " leader + f: FZF Search
 nnoremap <silent><leader>f :NV<CR>
+" TODO Function to move selected text to other file
 nmap <F2> :w >> kkt.md<CR>
 "cmap <F5> :'<,'>w >> =strftime("%Y-%m-%d.md")<CR>
 "cmap <F6> w >> =strftime("%Y-%m-%d.md")<CR>
@@ -195,27 +201,22 @@ nnoremap <leader>dd  V :DONE<CR> dd
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
-"Remap autocompletion from Ctrl+Space to Enter when autocomplete menu i
-"Remap autocompletion from Ctrl+Space to Enter when autocomplete menu i
+"Remap autocompletion from Ctrl+Space to Enter when autocomplete menu active
 ":inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 "========PLUGINS SETTINGS======================================================
-"Syntastic
+
+" Syntastic
 " Change interpreter to Python 3 
 let g:syntastic_python_python_exec = '/usr/local/Cellar/python3'
 
+" indentLine
 let g:indentLine_color_term = 242
 
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_powerline_fonts = 1
-let g:vim_markdown_folding_disabled=1
+" Netrw Tree view
 let g:netrw_liststyle=3
 
-"Lightline
+" Lightline
 let g:lightline = {
   \   'colorscheme': 'powerline',
   \   'active': {
@@ -243,11 +244,6 @@ let g:lightline.tabline = {
 set showtabline=2  " Show tabline
 set guioptions-=e  " Don't use GUI tabline
 set noshowmode      " Remove "INSERT, NORMAL, etc from status
-
-"notational-fzf-vim
-let g:nv_search_paths = ['$HOME/Dropbox/text']
-"let g:nv_main_directory = ['~/Dropbox']
-let g:nv_use_short_pathnames = 1
 
 " Calendar
 let g:calendar_first_day = 'monday'
@@ -308,7 +304,6 @@ autocmd BufNewFile,BufRead *.qbs   set filetype=javascript
 "autocmd bufnewfile *.md execute "1," . 5 . "g/Created:/s//Created:" . expand('<afile>')
 "autocmd bufnewfile *.md execute "1," . 5 . "g/Created:/s//Created:" . expand('<afile>')
 "autocmd bufnewfile *.md execute "1," . 2 . "g/#.*/s//#" .strftime("%Y%m%d%H%M%S%Z")
-"
 
 function! ToggleCalendar()
   execute ":Calendar -view=year -split=vertical -width=27"
@@ -324,17 +319,22 @@ function! ToggleCalendar()
   end
 endfunction
 :autocmd FileType vimwiki map <leader>cd :call ToggleCalendar()<CR>
-" fzf.vim
-" Mapping selecting mappings
+
+" fzf.vim - Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
-" Insert mode completion
+" fzf.vim - Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" notational-fzf-vim
+let g:nv_search_paths = ['$HOME/Dropbox/text']
+"let g:nv_main_directory = ['~/Dropbox']
+let g:nv_use_short_pathnames = 1
 
 " Vim-Ledger
 let g:ledger_maxwidth = 80
@@ -344,6 +344,7 @@ let g:ledger_default_commodity = 'EUR'
 let g:ledger_commodity_before = 1
 let g:ledger_commodity_sep = ' '
 let g:ledger_extra_options = '-f ~/Dropbox/text/Ledger/main.ledger'
+
 if exists('g:ycm_filetype_blacklist')
     call extend(g:ycm_filetype_blacklist, { 'ledger': 1 })
 endif
@@ -351,6 +352,3 @@ endif
 noremap <leader>e :call ledger#entry()<CR>
 noremap <leader>r :call ledger#align_amount_at_cursor()<CR>
 noremap <leader>t :call ledger#transaction_state_toggle(line('.'), ' *?!')<CR>
-"au FileType ledger inoremap <silent> <Tab> \
-"        <C-r>=ledger#autocomplete_and_align() <CR>
-"au FileType ledger vnoremap <silent> <Tab> :LedgerAlign<CR>
