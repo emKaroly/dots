@@ -72,5 +72,8 @@ FONTS=(
 
 brew cask install ${FONTS[@]}
 
+brew tap nickolasburr/pfa
+brew install sc-im
+
 # Remove outdated versions from the cellar.
 brew cleanup
