@@ -5,5 +5,6 @@
 	autocrlf = input
 	filemode = false
 	excludesfile = ~/.config/git/ignore
+	safecrlf = false
 [alias]
 	permission-reset = !git diff -p -R --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
