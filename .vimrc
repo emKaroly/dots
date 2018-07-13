@@ -18,7 +18,6 @@ Plugin 'VundleVim/Vundle.vim'
 " Appearance 
 Plugin 'flazz/vim-colorschemes'
 Plugin 'itchyny/lightline.vim'
-Plugin 'Yggdroot/indentLine'
 " Wiki
 Plugin 'vimwiki/vimwiki'
 "Plugin 'lervag/wiki'
@@ -36,13 +35,15 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'majutsushi/tagbar'
 " Code completion
-Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'Valloric/YouCompleteMe'
 " Misc
 Plugin 'ledger/vim-ledger'
 Plugin 'sk1418/HowMuch'
 "A Plugin to show a diff, whenever recovering a buffer
 Plugin 'chrisbra/Recover.vim'
+" Filetype
+Plugin 'chrisbra/csv.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -210,9 +211,7 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " Change interpreter to Python 3 
 let g:syntastic_python_python_exec = '/usr/local/Cellar/python3'
 
-" indentLine
-let g:indentLine_color_term = 242
-
+let g:vim_markdown_folding_disabled=1
 " Netrw Tree view
 let g:netrw_liststyle=3
 
