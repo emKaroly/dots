@@ -1,0 +1,7 @@
+color "type=HEADINGS fg=BLACK bg=WHITE"
+color "type=CELL_SELECTION fg=BLACK bg=YELLOW"
+color "type=CELL_SELECTION_SC fg=BLACK bg=YELLOW"
+
+color "type=STRG fg=WHITE bg=BLACK dim=1"
+color "type=NUMB fg=WHITE bg=BLACK"
+
