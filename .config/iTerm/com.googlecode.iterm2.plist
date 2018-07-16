@@ -1204,6 +1204,8 @@
 	<real>537535019.47957397</real>
 	<key>DeleteProfile_selection</key>
 	<integer>0</integer>
+	<key>EnableDivisionView</key>
+	<false/>
 	<key>HideTab</key>
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
@@ -1285,15 +1287,15 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>528 221 445 306 0 0 1440 900 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>970 779 620 392 0 0 2560 1418 </string>
+	<string>2970 381 620 392 2560 0 1440 900 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>269 207 599 388 0 0 1440 900 </string>
+	<string>269 207 606 469 0 0 1440 900 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>1384 958 918 401 0 0 2560 1418 </string>
+	<string>2756 291 796 473 2560 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>2682 34 1100 844 2560 0 1440 878 </string>
+	<string>1097 65 1440 837 0 0 2560 1418 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>2961 0 800 878 2560 0 1440 878 </string>
+	<string>460 226 1350 1186 0 0 2560 1440 </string>
 	<key>NeverWarnAboutShortLivedSessions_3543A154-4AAA-4B04-9109-DF4DD507839A</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_3543A154-4AAA-4B04-9109-DF4DD507839A_selection</key>
@@ -2093,13 +2095,17 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-04-23T10:20:52Z</date>
+	<date>2018-07-13T12:48:05Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowBookmarkName</key>
 	<false/>
+	<key>SmartPlacement</key>
+	<true/>
 	<key>TabStyle</key>
 	<integer>1</integer>
+	<key>TabViewType</key>
+	<integer>0</integer>
 	<key>TerminalMargin</key>
 	<integer>0</integer>
 	<key>TerminalVMargin</key>
@@ -2109,7 +2115,7 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>3.1.6</string>
+	<string>3.1.7</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
