@@ -701,7 +701,7 @@ shell/i/.lyx
 	View=%view{ascii} /usr/local/Cellar/midnight-commander/4.8.20/libexec/mc/ext.d/misc.sh view lyx
 
 # csv
-shell/i/.csv
+regex/i/\.(csv|sc)$
     Open=(scim %f)
 
 # torrent
