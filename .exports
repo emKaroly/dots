@@ -17,6 +17,8 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 export PATH="/Library/TeX/texbin/:$PATH"
-export PYTHONHOME=/usr/local/Cellar/python/3.6.5/Frameworks/Python.framework/Versions/3.6/
-export PYTHONPATH=$PYTHONHOME/bin
+#export PYTHONHOME=/usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7
+#export PYTHONPATH=$PYTHONHOME/bin
+unset PYTHONHOME
+unset PYTHONPATH
 export JAVA_HOME=/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home/
