@@ -18,6 +18,9 @@ Plugin 'VundleVim/Vundle.vim'
 " Appearance 
 Plugin 'flazz/vim-colorschemes'
 Plugin 'itchyny/lightline.vim'
+"Plugin 'octol/vim-cpp-enhanced-highlight'
+"Plugin 'kendling/taghighlight'
+Plugin 'jeaye/color_coded'
 " Wiki
 Plugin 'vimwiki/vimwiki'
 "Plugin 'lervag/wiki'
