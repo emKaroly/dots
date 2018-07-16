@@ -68,7 +68,11 @@ set shell=/bin/bash
 "========COLORSCHEME===========================================================
 colorscheme gruvbox
 set background=dark
-
+" temporary fix
+" https://github.com/vim/vim/issues/3117
+if has('python3')
+  silent! python3 1
+endif
 "Set background depending on time of day
 "let hourOfDay = strftime("%H")
 ""if strftime("%H") < 18
