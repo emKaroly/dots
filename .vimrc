@@ -153,7 +153,7 @@ set path+=$HOME/Dropbox/**,$HOME/Projects/**
 command Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
 " Find TODO in current File
 command Td noautocmd vimgrep /TODO\|FIXME/j % | cw
-command R !python3 %
+command R call RunScriptFile()
 command S !screen -S logWindow -X exec python3 %:p
 
 "Markdown Preview
@@ -282,23 +282,6 @@ let g:vimwiki_folding = 'custom'
 " Default to Vimwiki's section folding options
 autocmd FileType vimwiki setlocal fdm=indent
 
-function! VimwikiLinkHandler(link)
-    let link = a:link
-    if link =~# '.*pdf$'
-        silent exe "!" . "open " . $HOME . link
-        return 1
-    elseif link =~# '.*lgd$' || link =~# '.*ledger$'
-        silent exe ":e!" . $HOME . link
-        return 1
-    elseif a:link =~ "command:"
-        let command = a:link[8:]
-        silent exe ":r!".command
-        return 1
-    else
-       return 0
-    endif
-endfunction
-
 " Autocommands
 " When new .md file is created load the template file.
 "autocmd bufnewfile *.md execute ":put %"
@@ -311,19 +294,6 @@ autocmd BufNewFile,BufRead *.qbs   set filetype=javascript
 "autocmd bufnewfile *.md execute "1," . 5 . "g/Created:/s//Created:" . expand('<afile>')
 "autocmd bufnewfile *.md execute "1," . 2 . "g/#.*/s//#" .strftime("%Y%m%d%H%M%S%Z")
 
-function! ToggleCalendar()
-  execute ":Calendar -view=year -split=vertical -width=27"
-  if exists("g:calendar_open")
-    if g:calendar_open == 1
-      execute "q"
-      unlet g:calendar_open
-    else
-      g:calendar_open = 1
-    end
-  else
-    let g:calendar_open = 1
-  end
-endfunction
 :autocmd FileType vimwiki map <leader>cd :call ToggleCalendar()<CR>
 
 " fzf.vim - Mapping selecting mappings
@@ -358,3 +328,44 @@ endif
 noremap <leader>e :call ledger#entry()<CR>
 noremap <leader>r :call ledger#align_amount_at_cursor()<CR>
 noremap <leader>t :call ledger#transaction_state_toggle(line('.'), ' *?!')<CR>
+
+" functions
+function RunScriptFile()
+    let fileExtension = expand('%:e')
+    if fileExtension == 'lua'
+        !lua %
+    elseif fileExtension == 'py'
+        !python3 %
+    endif
+endfunction
+
+function! ToggleCalendar()
+  execute ":Calendar -view=year -split=vertical -width=27"
+  if exists("g:calendar_open")
+    if g:calendar_open == 1
+      execute "q"
+      unlet g:calendar_open
+    else
+      g:calendar_open = 1
+    end
+  else
+    let g:calendar_open = 1
+  end
+endfunction
+
+function! VimwikiLinkHandler(link)
+    let link = a:link
+    if link =~# '.*pdf$'
+        silent exe "!" . "open " . $HOME . link
+        return 1
+    elseif link =~# '.*lgd$' || link =~# '.*ledger$'
+        silent exe ":e!" . $HOME . link
+        return 1
+    elseif a:link =~ "command:"
+        let command = a:link[8:]
+        silent exe ":r!".command
+        return 1
+    else
+       return 0
+    endif
+endfunction
