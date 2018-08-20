@@ -71,7 +71,7 @@ set background=dark
 " temporary fix
 " https://github.com/vim/vim/issues/3117
 if has('python3')
-  silent! python3 1
+    silent! python3 1
 endif
 "Set background depending on time of day
 "let hourOfDay = strftime("%H")
@@ -224,30 +224,29 @@ let g:netrw_liststyle=3
 
 " Lightline
 let g:lightline = {
-  \   'colorscheme': 'powerline',
-  \   'active': {
-  \     'left':[ [ 'mode', 'paste' ],
-  \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
-  \     ]
-  \   },
-	\   'component': {
-	\     'lineinfo': ' %3l:%-2v',
-	\   },
-  \   'component_function': {
-  \     'gitbranch': 'fugitive#head',
-  \   }
-  \ }
+            \   'colorscheme': 'powerline',
+            \   'active': {
+            \     'left':[ [ 'mode', 'paste' ],
+            \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+            \     ]
+            \   },
+            \   'component': {
+            \     'lineinfo': ' %3l:%-2v',
+            \   },
+            \   'component_function': {
+            \     'gitbranch': 'fugitive#head',
+            \   }
+            \ }
 let g:lightline.separator = {
-	\   'left': '', 'right': ''
-  \}
+            \   'left': '', 'right': ''
+            \}
 let g:lightline.subseparator = {
-	\   'left': '', 'right': '' 
-  \}
+            \   'left': '', 'right': '' 
+            \}
 let g:lightline.tabline = {
-  \   'left': [ ['tabs'] ],
-  \   'right': [ ['close'] ]
-  \ }
-set showtabline=2  " Show tabline
+            \   'left': [ ['tabs'] ],
+            \   'right': [ ['close'] ]
+            \ }
 set guioptions-=e  " Don't use GUI tabline
 set noshowmode      " Remove "INSERT, NORMAL, etc from status
 
@@ -340,17 +339,17 @@ function RunScriptFile()
 endfunction
 
 function! ToggleCalendar()
-  execute ":Calendar -view=year -split=vertical -width=27"
-  if exists("g:calendar_open")
-    if g:calendar_open == 1
-      execute "q"
-      unlet g:calendar_open
+    execute ":Calendar -view=year -split=vertical -width=27"
+    if exists("g:calendar_open")
+        if g:calendar_open == 1
+            execute "q"
+            unlet g:calendar_open
+        else
+            g:calendar_open = 1
+        end
     else
-      g:calendar_open = 1
+        let g:calendar_open = 1
     end
-  else
-    let g:calendar_open = 1
-  end
 endfunction
 
 function! VimwikiLinkHandler(link)
@@ -366,6 +365,6 @@ function! VimwikiLinkHandler(link)
         silent exe ":r!".command
         return 1
     else
-       return 0
+        return 0
     endif
 endfunction
