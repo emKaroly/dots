@@ -225,6 +225,11 @@ let g:gitgutter_sign_modified = '░'
 let g:gitgutter_sign_removed = '█'
 let g:gitgutter_sign_removed_first_line = '▀▀'
 let g:gitgutter_sign_modified_removed = '┌─'
+
+" Gutentags
+set tags+=$HOME/.tags/**/tags
+let g:gutentags_cache_dir = expand('~/.tags/cache')
+
 " Syntastic
 " Change interpreter to Python 3 
 let g:syntastic_python_python_exec = '/usr/local/Cellar/python3'
