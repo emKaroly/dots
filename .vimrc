@@ -347,6 +347,9 @@ noremap <leader>t :call ledger#transaction_state_toggle(line('.'), ' *?!')<CR>
 
 " functions
 function RunScriptFile()
+    :w
+    "change wd for current file
+    :lcd %:p:h
     let fileExtension = expand('%:e')
     if fileExtension == 'lua'
         !lua %
