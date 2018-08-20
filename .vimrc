@@ -18,6 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Appearance 
 Plugin 'flazz/vim-colorschemes'
 Plugin 'itchyny/lightline.vim'
+Plugin 'ap/vim-buftabline'
 "Plugin 'octol/vim-cpp-enhanced-highlight'
 "Plugin 'kendling/taghighlight'
 Plugin 'jeaye/color_coded'
@@ -179,13 +180,17 @@ set guioptions=
 "VIM Shortcuts
 let mapleader = ';'
 "Shortcut for buffer switching  (\ + l)
-nnoremap <leader>l :ls<CR>:b<space> 
+nnoremap <leader>o :ls<CR>:b<space>
 "Toggle relative line numbers (\ + n)
 nnoremap <silent><leader>n :set relativenumber!<cr>
-"Tabnext (; + j)
-nnoremap <leader>k :tabnext<CR>
-"Tabprevious (; + k)
-nnoremap <leader>j :tabprevious<CR>
+"Buffer Next (; + k)
+nnoremap <leader>k :bnext<CR>
+"Buffer Previous (; + j)
+nnoremap <leader>j :bprevious<CR>
+"Tabnext (; + l)
+nnoremap <leader>l :tabnext<CR>
+"Tabprevious (; + h)
+nnoremap <leader>h :tabprevious<CR>
 " remap control-enter to open files in new tab
 nmap <silent> <C-CR> t :rightbelow 20vs<CR>:e .<CR>:wincmd h<CR>
 " F3 insert timestamp
@@ -206,7 +211,7 @@ nmap <F2> :w >> kkt.md<CR>
 command! -range DONE execute "'<,'>:w! >> ".strftime("%Y-%m-%d.md")
 nnoremap <leader>dd  V :DONE<CR> dd
 
-nnoremap <leader>ev :tabe $MYVIMRC<CR>
+nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 "Remap autocompletion from Ctrl+Space to Enter when autocomplete menu active
@@ -247,6 +252,7 @@ let g:lightline.tabline = {
             \   'left': [ ['tabs'] ],
             \   'right': [ ['close'] ]
             \ }
+set showtabline=1  " Only if there are at least two tab pages
 set guioptions-=e  " Don't use GUI tabline
 set noshowmode      " Remove "INSERT, NORMAL, etc from status
 
