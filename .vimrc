@@ -180,7 +180,7 @@ set guioptions=
 "VIM Shortcuts
 let mapleader = ';'
 "Shortcut for buffer switching  (\ + l)
-nnoremap <leader>o :ls<CR>:b<space>
+nnoremap <leader>' :ls<CR>:b<space>
 "Toggle relative line numbers (\ + n)
 nnoremap <silent><leader>n :set relativenumber!<cr>
 "Buffer Next (; + k)
