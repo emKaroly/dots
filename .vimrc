@@ -48,7 +48,7 @@ Plugin 'sk1418/HowMuch'
 "A Plugin to show a diff, whenever recovering a buffer
 Plugin 'chrisbra/Recover.vim'
 " Filetype
-Plugin 'chrisbra/csv.vim'
+"Plugin 'chrisbra/csv.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
