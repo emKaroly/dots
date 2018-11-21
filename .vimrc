@@ -327,7 +327,7 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " notational-fzf-vim
-let g:nv_search_paths = ['$HOME/Dropbox/text']
+let g:nv_search_paths = ['~/Dropbox/text']
 "let g:nv_main_directory = ['~/Dropbox']
 let g:nv_use_short_pathnames = 1
 
