@@ -26,7 +26,8 @@ Plugin 'jeaye/color_coded'
 Plugin 'vimwiki/vimwiki'
 "Plugin 'lervag/wiki'
 Plugin 'godlygeek/tabular'
-Plugin 'itchyny/calendar.vim'
+"Plugin 'itchyny/calendar.vim'
+Plugin 'mattn/calendar-vim'
 " Search
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
@@ -269,9 +270,11 @@ set noshowmode      " Remove "INSERT, NORMAL, etc from status
 
 " Calendar
 let g:calendar_first_day = 'monday'
+let calendar_action = 'MyCalAction'
+let calendar_end = 'MyCalActionEnd'
 
 " Vimwiki
-let g:vimwiki_use_calendar=1
+let g:vimwiki_use_calendar=0
 :map    <leader>cc  <Plug>VimwikiToggleListItem
 :nmap   <Leader>u   <Plug>VimwikiDiaryPrevDay
 :nmap   <Leader>d   <Plug>VimwikiDiaryNextDay
@@ -353,19 +356,26 @@ function RunScriptFile()
     let fileExtension = expand('%:e')
     if fileExtension == 'lua'
         !lua %
+    elseif fileExtension == 'sh'
+        !sh %
     elseif fileExtension == 'py'
         !python3 %
+    elseif fileExtension == 'cpp'
+        !clang++ -std=c++17 -fcoroutines-ts -stdlib=libc++ % -o %:r && ./%:r
     endif
 endfunction
 
 function! ToggleCalendar()
-    execute ":Calendar -view=year -split=vertical -width=27"
+    let l:year = strftime("%Y")
+    let l:month = strftime("%m")
+    execute ":Calendar [[" . l:year . "] " . l:month . "] " . "-view=year -split=vertical -width=27"
     if exists("g:calendar_open")
         if g:calendar_open == 1
             execute "q"
             unlet g:calendar_open
         else
             g:calendar_open = 1
+            execute "t"
         end
     else
         let g:calendar_open = 1
@@ -387,4 +397,13 @@ function! VimwikiLinkHandler(link)
     else
         return 0
     endif
+endfunction
+
+function MyCalActionEnd()
+
+endfunction
+
+function MyCalAction(day,month,year,week,dir)
+    let @+ = a:year . "-" . printf("%02d", a:month) . "-" . printf("%02d", a:day)
+    call calendar#close()
 endfunction
