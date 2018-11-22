@@ -306,6 +306,9 @@ autocmd FileType vimwiki setlocal fdm=indent
 "autocmd bufnewfile *.md execute ":put %"
 "autocmd bufnewfile *.md execute ":put expand('%:t:r')"
 "autocmd bufnewfile *.md source $HOME/Dropbox/text/notes_header.txt
+"autocmd BufRead *.cpp setlocal makeprg=clang++\ -std=c++17\ -fcoroutines-ts\ -stdlib=libc++\ %\ -o\ %:r 
+let $CXX='clang++'
+let $CXXFLAGS='-std=c++17 -stdlib=libc++'
 autocmd bufnewfile *.md source $HOME/Dropbox/text/notes_test.txt
 autocmd BufNewFile,BufRead *.qs   set filetype=javascript
 autocmd BufNewFile,BufRead *.qbs   set filetype=javascript
@@ -404,6 +407,8 @@ function MyCalActionEnd()
 endfunction
 
 function MyCalAction(day,month,year,week,dir)
-    let @+ = a:year . "-" . printf("%02d", a:month) . "-" . printf("%02d", a:day)
+    "let @+ = printf('%04d-%02d-%02d', a:year, a:month, a:day)
     call calendar#close()
+    call append(line('.'), printf('%04d-%02d-%02d', a:year, a:month, a:day))
+    exe ":normal! JA"
 endfunction
