@@ -41,8 +41,10 @@ APPS=(
     alfred
     android-studio
     appcleaner
+    basictex
     contexts
     dropbox
+    enpass
     flux
     iterm2
     jettison
@@ -55,7 +57,6 @@ APPS=(
     scroll-reverser
     skype
     teamviewer
-    basictex
     the-unarchiver
     vlc
     xnviewmp
