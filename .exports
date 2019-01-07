@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 # Make vim the default editor.
-export EDITOR=vim
+if [ -f "/Applications/MacVim.app/Contents/bin/vim" ] ; then
+  export EDITOR="/Applications/MacVim.app/Contents/bin/vim"
+else
+  export EDITOR=vim
+fi
 
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8';

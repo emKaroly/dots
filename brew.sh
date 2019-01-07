@@ -10,8 +10,6 @@ brew update
 brew upgrade
 
 brew install coreutils
-brew install vim --with-python3 --with-override-system-vi
-brew install macvim --with-python3
 brew install mc
 brew install git
 brew install ledger
@@ -50,6 +48,7 @@ APPS=(
     jettison
     karabiner-elements
     limechat
+    macvim
     marked
     paragon-ntfs
     parallels
