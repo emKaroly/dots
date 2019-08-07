@@ -150,6 +150,10 @@ set spell spelllang=en_us,SK
 set belloff=all
 set path+=$HOME/Dropbox/**,$HOME/Projects/**
 
+if has('nvim-0.3.2') || has('patch-8.1.0360')
+    set diffopt=filler,internal,algorithm:histogram,indent-heuristic
+endif
+
 "========COMMANDS==============================================================
 " Find TODO in current folder recursive
 command Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
