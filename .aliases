@@ -2,5 +2,6 @@ alias dots='/usr/bin/git --git-dir=/Users/kyle/.dots/ --work-tree=/Users/kyle'
 alias dotsedit='GIT_DIR=/Users/kyle/.dots/ GIT_WORK_TREE=/Users/kyle vim' 
 if [ -f "/Applications/MacVim.app/Contents/bin/vim" ] ; then
   alias vim="/Applications/MacVim.app/Contents/bin/vim"
+  alias vi="/Applications/MacVim.app/Contents/bin/vim"
 fi
 alias gvim="open -a MacVIm.app $1"

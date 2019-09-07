@@ -3,6 +3,7 @@
 # Make vim the default editor.
 if [ -f "/Applications/MacVim.app/Contents/bin/vim" ] ; then
   export EDITOR="/Applications/MacVim.app/Contents/bin/vim"
+  export VIEWER="/Applications/MacVim.app/Contents/bin/vim"
 else
   export EDITOR=vim
 fi
@@ -12,7 +13,7 @@ export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
 
 export PATH=$PATH:$HOME/Dropbox/src
-export TIMELOG=$HOME/Dropbox/text/ledger/timelog2018.lgd
+export TIMELOG=$HOME/Dropbox/text/ledger/timelog2019.lgd
 export LEDGER_FILE=$HOME/Dropbox/text/ledger/main.ledger
 export WIKI_DIR=$HOME/Dropbox/text/wiki
 export WIKI_DIR_PROJECTS=$HOME/Dropbox/Projects
