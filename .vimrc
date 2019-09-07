@@ -179,7 +179,7 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 "MacVim Settings
-:set guifont=DejaVu_Sans_Mono_for_Powerline:h16
+:set guifont=DejaVu_Sans_Mono_for_Powerline:h20
 set guioptions=
 
 "VIM Shortcuts
