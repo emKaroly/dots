@@ -41,6 +41,7 @@ Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'majutsushi/tagbar'
 " Code completion
 Plugin 'w0rp/ale'
+Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'Valloric/YouCompleteMe'
 " Misc
 Plugin 'ledger/vim-ledger'
@@ -49,7 +50,6 @@ Plugin 'sk1418/HowMuch'
 Plugin 'chrisbra/Recover.vim'
 " Filetype
 "Plugin 'chrisbra/csv.vim'
-Plugin  'OmniSharp/omnisharp-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -435,6 +435,8 @@ function RunScriptFile()
         !sh %
     elseif fileExtension == 'py'
         !python3 %
+    elseif fileExtension == 'cs'
+        !dotnet build && dotnet run
     elseif fileExtension == 'cpp'
         !clang++ -std=c++17 -fcoroutines-ts -stdlib=libc++ % -o %:r && ./%:r
     endif
