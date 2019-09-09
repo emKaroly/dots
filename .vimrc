@@ -164,6 +164,7 @@ command R call RunScriptFile()
 command S !screen -S logWindow -X exec python3 %:p
 
 "Markdown Preview
+command VCD :exe ":!code " . FindDirWithFolder('.vscode')
 command MKD :silent !open -a "Marked 2.app" %:p
 command MDP !python -m markdown2 %:p > tempMarkdownPreview.html && open tempMarkdownPreview.html
 command MD :silent !pandoc %:p -f markdown -t html -s -o /tmp/tmp.html && open /tmp/tmp.html
@@ -440,6 +441,12 @@ function RunScriptFile()
     elseif fileExtension == 'cpp'
         !clang++ -std=c++17 -fcoroutines-ts -stdlib=libc++ % -o %:r && ./%:r
     endif
+endfunction
+
+function FindDirWithFolder(folder)
+    "change wd for current file
+    :lcd %:p:h
+    return fnamemodify(finddir(a:folder,'.;/Users'),':p:h:h')
 endfunction
 
 function! ToggleCalendar()
