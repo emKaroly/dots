@@ -385,7 +385,7 @@ nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
 nnoremap <Leader>ss :OmniSharpStartServer<CR>
 nnoremap <Leader>sp :OmniSharpStopServer<CR>
 
-let g:OmniSharp_server_path = '/Users/kyle/.vscode/extensions/ms-vscode.csharp-1.21.1/.omnisharp/1.34.2/run'
+let g:OmniSharp_server_path = fnamemodify(findfile('run',$HOME . '/.vscode/extensions/*/.omnisharp/*/'),':p')
 
 augroup omnisharp_commands
     autocmd!
