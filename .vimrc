@@ -128,6 +128,10 @@ set foldmethod=indent
 "On pressing tab, insert 4 spaces
 set expandtab
 
+" Searches will be case insensitive
+set ignorecase
+" Search will be case sensitive if it contains an uppercase letter
+set smartcase
 "It hides buffers instead of closing them. This means that you can have
 "unwritten changes to a file and open a new file using :e, without being
 "forced to write or undo your changes first. Also, undo buffers and marks are
