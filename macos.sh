@@ -47,10 +47,10 @@ defaults write -g CGDisableCursorLocationMagnification -bool YES
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
 #System preferences>General>Appearance>Graphite
-defaults write -g AppleInterfaceStyle -string "Dark"
+#defaults write -g AppleInterfaceStyle -string "Dark"
 
 #System preferences>General>Use dark menubar and Dock
-defaults write -g AppleAquaColorVariant -int 6
+#defaults write -g AppleAquaColorVariant -int 6
 
 ###############################################################################
 # Safari & WebKit                                                             #
@@ -125,6 +125,7 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Disable Java
 defaults write com.apple.Safari WebKitJavaEnabled -bool false
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool false
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles -bool false
 
 # Block pop-up windows
 defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically -bool false
