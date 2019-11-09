@@ -244,6 +244,7 @@ nmap <Leader>gp <Plug>GitGutterPreviewHunk
 
 " Gutentags
 set tags+=$HOME/.tags/**/tags
+let g:gutentags_enabled = 0
 let g:gutentags_cache_dir = expand('~/.tags/cache')
 
 " Syntastic
