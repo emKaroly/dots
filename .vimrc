@@ -178,6 +178,7 @@ command MD :silent !pandoc %:p -f markdown -t html -s -o /tmp/tmp.html && open /
 command MDnum !pandoc %:p -f markdown --number-sections -t html -s -o /tmp/tmp.html && open /tmp/tmp.html
 command MDrtf !pandoc %:p -f markdown --number-sections -t rtf -s -o /tmp/tmp.rtf && open /tmp/tmp.rtf
 
+command LCD :lcd %:p:h
 command! -nargs=+ Silent
             \   execute 'silent <args>'
             \ | redraw!
