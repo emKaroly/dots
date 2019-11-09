@@ -48,7 +48,10 @@ Plugin 'ledger/vim-ledger'
 Plugin 'sk1418/HowMuch'
 "A Plugin to show a diff, whenever recovering a buffer
 Plugin 'chrisbra/Recover.vim'
+Plugin 'tpope/vim-dispatch'
+Plugin 'gfontenot/vim-xcode'
 " Filetype
+Plugin 'darfink/vim-plist'
 "Plugin 'chrisbra/csv.vim'
 
 " All of your Plugins must be added before the following line
