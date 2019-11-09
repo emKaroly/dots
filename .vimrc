@@ -362,11 +362,16 @@ let g:ledger_extra_options = '-f ~/Dropbox/text/Ledger/main.ledger'
 "OmniSharp
 let g:OmniSharp_server_stdio = 1
 " Timeout in seconds to wait for a response from the server
-let g:OmniSharp_timeout = 5
+let g:OmniSharp_timeout = 4
 " Don't autoselect first omnicomplete option, show options even if there is only
 " one (so the preview documentation is accessible). Remove 'preview' if you
 " don't want to see any documentation whatsoever.
 set completeopt=longest,menuone,preview
+
+" XCode
+let g:xcode_project_file = '/Volumes/Storage/Projects/PFX/pdfix/pdfix/platform/xcode/pdfix.xcodeproj'
+"let g:xcode_project_file = '/Volumes/Storage/Projects/PFX/pdfix/utils/cpc/platform/xcode/cpc.xcodeproj'
+"let g:xcode_runner_command = ':Make {cmd}'
 
 " Fetch full documentation during omnicomplete requests.
 " By default, only Type/Method signatures are fetched. Full documentation can
