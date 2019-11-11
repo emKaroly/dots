@@ -18,6 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Appearance 
 Plugin 'flazz/vim-colorschemes'
 Plugin 'itchyny/lightline.vim'
+Plugin 'edkolev/promptline.vim'
 Plugin 'ap/vim-buftabline'
 "Plugin 'octol/vim-cpp-enhanced-highlight'
 "Plugin 'kendling/taghighlight'
@@ -256,6 +257,13 @@ let g:vim_markdown_folding_disabled=1
 let g:netrw_liststyle=3
 
 " Lightline
+let g:promptline_preset = {
+        \'a' : [ promptline#slices#host() ],
+        \'b' : [ '$USER'],
+        \'c' : [ promptline#slices#vcs_branch(),'$(git rev-parse --short HEAD 2>/dev/null)' ],
+        \'y' : [ '%~' ],
+        \'warn' : [ promptline#slices#last_exit_code() ]}
+
 let g:lightline = {
             \   'colorscheme': 'powerline',
             \   'active': {
