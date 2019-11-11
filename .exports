@@ -7,7 +7,7 @@ if [ -f "/Applications/MacVim.app/Contents/bin/vim" ] ; then
 else
   export EDITOR=vim
 fi
-
+export HOMEBREW_AUTO_UPDATE_SECS=86400
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
