@@ -260,8 +260,7 @@ let g:netrw_liststyle=3
 let g:promptline_preset = {
         \'a' : [ promptline#slices#host() ],
         \'b' : [ '$USER'],
-        \'c' : [ promptline#slices#vcs_branch(),'$(git rev-parse --short HEAD 2>/dev/null)' ],
-        \'y' : [ '%~' ],
+        \'y' : [ '%~', promptline#slices#vcs_branch() ],
         \'warn' : [ promptline#slices#last_exit_code() ]}
 
 let g:lightline = {
