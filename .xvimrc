@@ -1,0 +1,13 @@
+set clipboard=unnamed
+set relativenumber
+set number
+set ignorecase
+set smartcase
+set nowrap
+set wrapscan
+
+nmap <C-k> :xcmenucmd Open Quickly...<CR>
+
+map ;k :xccmd selectNextTab<CR>
+map ;j :xccmd selectPreviousTab<CR>
+map <F4> :xccmd jumpToNextCounterpart<CR>
