@@ -54,6 +54,7 @@ Plugin 'gfontenot/vim-xcode'
 " Filetype
 Plugin 'darfink/vim-plist'
 "Plugin 'chrisbra/csv.vim'
+Plugin 'will133/vim-dirdiff'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -178,6 +179,7 @@ command MDP !python -m markdown2 %:p > tempMarkdownPreview.html && open tempMark
 command MD :silent !pandoc %:p -f markdown -t html -s -o /tmp/tmp.html && open /tmp/tmp.html
 command MDnum !pandoc %:p -f markdown --number-sections -t html -s -o /tmp/tmp.html && open /tmp/tmp.html
 command MDrtf !pandoc %:p -f markdown --number-sections -t rtf -s -o /tmp/tmp.rtf && open /tmp/tmp.rtf
+command JPP :exe '%!python -m json.tool'
 
 command LCD :lcd %:p:h
 command! -nargs=+ Silent
