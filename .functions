@@ -1,0 +1,10 @@
+function brewlist() {
+    if tput setaf 1 &> /dev/null; then
+        reset=$(tput sgr0);
+        blue=$(tput setaf 33);
+    else
+        reset="\e[0m";
+        blue="\e[1;34m";
+    fi;
+    brew leaves | while read bfile; do brew desc $bfile; echo -n "$blue     ->"; brew deps $bfile | awk '{printf(" %s ", $0)}'; echo "$reset"; done
+}

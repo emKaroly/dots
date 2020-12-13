@@ -143,6 +143,9 @@ defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 # Update extensions automatically
 defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 
+# XCode
+defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool true
+
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################

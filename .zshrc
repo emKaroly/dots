@@ -1,6 +1,8 @@
 source ~/.common
+source ~/.promptline.sh
+
 # The following lines were added by compinstall
-zstyle :compinstall filename '/Users/kyle/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 
 autoload -Uz compinit
 compinit

@@ -5,7 +5,7 @@ set wildmode=list:longest,list:full
 filetype off
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " alternatively, pass a path where Vundle should install plugins
@@ -18,6 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Appearance 
 Plugin 'flazz/vim-colorschemes'
 Plugin 'itchyny/lightline.vim'
+Plugin 'edkolev/promptline.vim'
 Plugin 'ap/vim-buftabline'
 "Plugin 'octol/vim-cpp-enhanced-highlight'
 "Plugin 'kendling/taghighlight'
@@ -256,6 +257,12 @@ let g:vim_markdown_folding_disabled=1
 let g:netrw_liststyle=3
 
 " Lightline
+let g:promptline_preset = {
+        \'a' : [ promptline#slices#host() ],
+        \'b' : [ '$USER'],
+        \'y' : [ '%~', promptline#slices#vcs_branch() ],
+        \'warn' : [ promptline#slices#last_exit_code() ]}
+
 let g:lightline = {
             \   'colorscheme': 'powerline',
             \   'active': {
