@@ -14,7 +14,7 @@
 [commit]
 	template = /Users/emkaroly/.stCommitMsg
 [merge]
-    tool = studio
+	tool = diffconflicts
 [difftool]
     prompt = false
     keepTemporaries = false
@@ -42,3 +42,8 @@
     cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 [pull]
 	rebase = false
+[mergetool "diffconflicts"]
+	cmd = vim -c DiffConflictsWithHistory \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = true
+[mergetool]
+	keepBackup = false

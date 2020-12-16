@@ -35,6 +35,7 @@ Plugin 'CoatiSoftware/vim-sourcetrail'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/gv.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'whiteinge/diffconflicts'
 " cTags
 "Plugin 'ludovicchabant/vim-gutentags'
 "Plugin 'majutsushi/tagbar'
