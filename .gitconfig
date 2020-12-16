@@ -1,10 +1,44 @@
 [user]
 	email = molnarkarol@gmail.com
-	name = Karol Molnár
+	name = Karol Molnár
 [core]
 	autocrlf = input
 	filemode = false
-	excludesfile = ~/.config/git/ignore
+	excludesfile = /Users/emkaroly/.config/git/ignore
 	safecrlf = false
 [alias]
 	permission-reset = !git diff -p -R --no-color | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
+	dts = difftool --dir-diff
+    dtv = difftool --tool=vimdiff --dir-diff
+    dtb = difftool --tool=bc --dir-diff --no-prompt --no-symlink
+[commit]
+	template = /Users/emkaroly/.stCommitMsg
+[merge]
+    tool = studio
+[difftool]
+    prompt = false
+    keepTemporaries = false
+    trustExitCode = false
+    keepBackup = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[difftool "studio"]
+	cmd = /Applications/Android\\ Studio.app/Contents/MacOS/studio diff $(cd $(dirname \"$LOCAL\") && pwd)/$(basename \"$LOCAL\") $(cd $(dirname \"$REMOTE\") && pwd)/$(basename \"$REMOTE\")
+[mergetool "studio"]
+    cmd = /Applications/Android\\ Studio.app/Contents/MacOS/studio merge $(cd $(dirname \"$LOCAL\") && pwd)/$(basename \"$LOCAL\") $(cd $(dirname \"$REMOTE\") && pwd)/$(basename \"$REMOTE\") $(cd $(dirname \"$BASE\") && pwd)/$(basename \"$BASE\") $(cd $(dirname \"$MERGED\") && pwd)/$(basename \"$MERGED\")
+    trustExitCode = true
+[mergetool "p4merge"]
+	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge "\"$PWD/$BASE\"" "\"$PWD/$REMOTE\"" "\"$PWD/$LOCAL\"" "\"$PWD/$MERGED\""
+	keepTemporaries = true
+	trustExitCode = false
+	keepBackup = false
+[difftool "vimdiff"]
+    cmd = vimdiff
+[difftool "filemerge"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+[pull]
+	rebase = false
