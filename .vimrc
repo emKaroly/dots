@@ -40,7 +40,7 @@ Plugin 'airblade/vim-gitgutter'
 "Plugin 'majutsushi/tagbar'
 " Code completion
 Plugin 'w0rp/ale'
-Plugin 'OmniSharp/omnisharp-vim'
+"Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'Valloric/YouCompleteMe'
 " Misc
 Plugin 'ledger/vim-ledger'
@@ -460,7 +460,7 @@ function RunScriptFile()
     elseif fileExtension == 'cs'
         !dotnet build && dotnet run
     elseif fileExtension == 'cpp'
-        !clang++ -std=c++17 -fcoroutines-ts -stdlib=libc++ % -o %:r && ./%:r
+        !clang++ -g -std=c++17 -fcoroutines-ts -stdlib=libc++ % -o %:r && ./%:r
     endif
 endfunction
 
