@@ -15,6 +15,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
+# Fonts smoothing
+defaults -currentHost write -g AppleFontSmoothing -int 0
 
 #System Prefernces>Keyboard>Delay Until Repeat
 defaults write -g InitialKeyRepeat -int 15
