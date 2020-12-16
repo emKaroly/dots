@@ -5,3 +5,5 @@ if [ -f "/Applications/MacVim.app/Contents/bin/vim" ] ; then
   alias vi="/Applications/MacVim.app/Contents/bin/vim"
 fi
 alias gvim="open -a MacVIm.app $1"
+
+alias rups="java -jar ~/Dropbox/bin/iText-RUPS/itext-rups-7.1.11.jar $1 "$@" > /dev/null"
