@@ -20,9 +20,6 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'itchyny/lightline.vim'
 Plugin 'edkolev/promptline.vim'
 Plugin 'ap/vim-buftabline'
-"Plugin 'octol/vim-cpp-enhanced-highlight'
-"Plugin 'kendling/taghighlight'
-Plugin 'jeaye/color_coded'
 " Wiki
 Plugin 'vimwiki/vimwiki'
 "Plugin 'lervag/wiki'
@@ -36,10 +33,11 @@ Plugin 'Alok/notational-fzf-vim'
 Plugin 'CoatiSoftware/vim-sourcetrail'
 " Git
 Plugin 'tpope/vim-fugitive'
+Plugin 'junegunn/gv.vim'
 Plugin 'airblade/vim-gitgutter'
 " cTags
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'majutsushi/tagbar'
+"Plugin 'ludovicchabant/vim-gutentags'
+"Plugin 'majutsushi/tagbar'
 " Code completion
 Plugin 'w0rp/ale'
 Plugin 'OmniSharp/omnisharp-vim'
@@ -124,10 +122,10 @@ set nowrap
 set shell=/bin/zsh
 
 set nosmartindent
-"show existing tab with 4 spaces width
-set tabstop=4
-"when indenting with '>', use 4 spaces width
-set shiftwidth=4
+"show existing tab with 2 spaces width
+set tabstop=2
+"when indenting with '>', use 2 spaces width
+set shiftwidth=2
 set nofoldenable
 set foldmethod=indent
 "On pressing tab, insert 4 spaces
@@ -161,7 +159,7 @@ set belloff=all
 set path+=$HOME/Dropbox/**,$HOME/Projects/**
 
 if has('nvim-0.3.2') || has('patch-8.1.0360')
-    set diffopt=filler,internal,algorithm:histogram,indent-heuristic
+    set diffopt=vertical,filler,internal,algorithm:histogram,indent-heuristic
 endif
 
 "========COMMANDS==============================================================
