@@ -87,6 +87,8 @@ filepos_max_saved_entries=1024
 
 safe_overwrite=false
 
+shadows=true
+
 [Layout]
 message_visible=true
 keybar_visible=false
@@ -97,7 +99,7 @@ menubar_visible=false
 free_space=true
 horizontal_split=false
 vertical_equal=true
-left_panel_size=50
+left_panel_size=55
 horizontal_equal=true
 top_panel_size=1
 
