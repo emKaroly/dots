@@ -37,11 +37,11 @@ sudo -s 'echo /usr/local/bin/zsh >> /etc/shells' && chsh -s /usr/local/bin/zsh
 
 echo "Installing apps..."
 
+brew install alt-tab
 brew install --cask alfred
 brew install --cask android-studio
 brew install --cask appcleaner
 brew install --cask basictex
-brew install --cask contexts
 brew install --cask dropbox
 brew install --cask enpass
 brew install --cask iterm2
