@@ -27,6 +27,7 @@ brew install fzf
 brew install rg
 brew install gibo
 brew install cheat
+brew install romkatv/powerlevel10k/powerlevel10k
 #brew install cmus
 #brew install aria2
 
